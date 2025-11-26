@@ -91,6 +91,7 @@ int main() {
         {"hello.miaw", NULL, "cat hello.miaw"},
         {"hello.ml", "ocamlopt hello.ml -o hello.ml.out", "./hello.ml.out"},
         {"hello.nim", "nim c hello.nim", "./hello"},
+        {"hello.pony", "ponyc hello.pony", "./hello"},
         {"hello.py", NULL, "python3 hello.py"},
         {"hello.rb", NULL, "ruby hello.rb"},
         {"hello.s", "gcc hello.s -o hello.s.out", "./hello.s.out"},
@@ -164,16 +165,17 @@ int main() {
     for (int i = 0; i < num_programs; ++i) {
         if (programs[i].compile_cmd != NULL) {
             char rm_cmd[MAX_COMMAND_LEN];
-            if (strstr(programs[i].name, ".nim") != NULL) {
+            // Handle languages that produce an executable without an extension (e.g., Nim, Pony)
+            if (strstr(programs[i].name, ".nim") != NULL || strstr(programs[i].name, ".pony") != NULL) {
                 char base_name[MAX_COMMAND_LEN];
                 strncpy(base_name, programs[i].name, sizeof(base_name) - 1);
                 base_name[sizeof(base_name) - 1] = '\0';
                 char* dot = strrchr(base_name, '.');
-                if (dot) *dot = '\0';
+                if (dot) *dot = '\0'; // Remove extension
                 snprintf(rm_cmd, MAX_COMMAND_LEN, "rm -f %s", base_name);
             } else {
-                // for other compiled languages, the actual_run_cmd is the path to the binary,
-                // which usually starts with "./". i remove the "./" prefix for the rm command
+                // For other compiled languages, the actual_run_cmd is the path to the binary,
+                // which usually starts with "./". Remove the "./" prefix for the rm command.
                 snprintf(rm_cmd, MAX_COMMAND_LEN, "rm -f %s", programs[i].actual_run_cmd + 2);
             }
             printf("Cleaning up: %s\n", rm_cmd);
