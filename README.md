@@ -6,9 +6,13 @@ in 1978, kernighan and dennis ritchie included the same phrase in The C Programm
 
 as new languages were created, the tradition carried over. developers kept using "Hello, World" as the standard first program to confirm that the compiler, interpreter, or environment was set up correctly. the example became a universal baseline for testing and teaching across programming.
 
+## 2026
+
+Happy New Year! i havent opened github in quite a long time (perhaps since last year), the new implementation (PureScript) is probably the final commit on this repo as i cultivate increasingly profound indolence.
+
 ## Note
 
-You may use this to learn about a specific language. (im slowly falling in love with Golang, so if someday the main language becomes Go, thats expected, but its not going to happen because my love for Crystal will never be broken)
+You may use this to learn about a specific language.
 
 ## License
 
