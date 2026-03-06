@@ -12,14 +12,15 @@ end
   e = (tbl[64] ^ tbl[37])
   l = (tbl[64] ^ tbl[44])
   o = (tbl[64] ^ tbl[47])
-  c = (tbl[64] ^ tbl[84])
+  c = (tbl[64] ^ tbl[108])
   s = (tbl[64] ^ tbl[96])
   w = (tbl[64] ^ tbl[55])
   r = (tbl[64] ^ tbl[50])
   d = (tbl[64] ^ tbl[36])
   n = (tbl[64] ^ tbl[74])
 
-  ptr = Pointer(UInt8).new(0x1_0000_0000 - 0xFFFF_FFE7)
+  buf = uninitialized UInt8[13]
+  ptr = buf.to_unsafe
   ptr[ 0] = h
   ptr[ 1] = e
   ptr[ 2] = l
