@@ -12,7 +12,7 @@ Happy New Year! i havent opened github in quite a long time (perhaps since last 
 
 ## Note
 
-You may use this to learn about a specific language.
+You may use this to learn about a specific language. If you found an issue, its probably because im not an omniscient who would master every single language.
 
 ## License
 
